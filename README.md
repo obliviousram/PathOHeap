@@ -19,7 +19,10 @@ All source files are in the `src/` directory.
   results.
 - `main`: Runs one of the above four tests.
 
-To compile, uncomment out the desired test in `main.cpp`, comment out any other tests, then run
-`make` in this directory. Run the test with `./POHeapTester`.
+To compile and run: 
 
-C++17 is required. Known to compile with `gcc version 7.4.0 (Ubuntu 7.4.0-1ubuntu1~18.04.1)`.
+1. Uncomment out the desired test in `src/main.cpp`, comment out any other tests. 
+2. Run `make` in this directory. 
+3. Run the test with `./POHeapTester`.
+
+C++17 is required. Known to compile with `gcc version 7.4.0 (Ubuntu 7.4.0-1ubuntu1~18.04.1)` and `gcc version 7.3.1 20180130 (Red Hat 7.3.1-2) (GCC)'.
