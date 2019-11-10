@@ -1,4 +1,5 @@
 # README
+A reference implementation for the Path Oblivious Heap algorithm. For a description of the algorithm, please refer to https://eprint.iacr.org/2019/274
 
 All source files are in the `src/` directory.
 - `Block`, `Bucket`: contains implementation for the Block and Bucket data structures as described
