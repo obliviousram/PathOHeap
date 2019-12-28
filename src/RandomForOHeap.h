@@ -2,7 +2,7 @@
 #define POHEAP_RANDOMFOROHEAP_H
 
 #include "RandForOHeapInterface.h"
-#include <random>
+#include "duthomhas/csprng.hpp"
 
 class RandomForOHeap : public RandForOHeapInterface {
  public:
@@ -16,8 +16,7 @@ class RandomForOHeap : public RandForOHeapInterface {
  private:
   static bool is_initialized;
   int bound;
-  std::linear_congruential_engine<unsigned long, 0x5DEECE66DL, 11, 281474976710656> rnd_generator;
-  long seed = 0L;
+  duthomhas::csprng rng;
 };
 
 #endif 

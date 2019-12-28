@@ -9,8 +9,7 @@ RandomForOHeap::RandomForOHeap() {
   }
 
   this->bound = -1;
-  rnd_generator.seed(0L);
-  this->seed = (seed ^ 0x5DEECE66DL) & ((1L << 48) - 1);
+  this->rng(long());
   RandomForOHeap::is_initialized  = true;
 }
 
@@ -19,20 +18,12 @@ int RandomForOHeap::getRandomLeaf() {
     throw std::runtime_error("Bound is not set.");
   }
 
-  long next = (seed * 0x5DEECE66DL + 0xBL) & ((1L << 48) - 1);
-  this->seed = next;
-  int bits = next >> (48 - 31);
-  if ((this->bound & -this->bound) == this->bound) {  // if bound is a power of 2
-    return (int)((this->bound * (long)bits) >> 31);
+  long next = this->rng();
+  int randVal = next % this->bound;
+  if (randVal < 0) {
+    randVal += this->bound;
   }
-  int val = bits % this->bound;
-  while (bits - val + (this->bound-1) < 0) {
-    next = (seed * 0x5DEECE66DL + 0xBL) & ((1L << 48) - 1);
-    this->seed = next;
-    bits = next >> (48 - 31);
-    val = bits % this->bound;
-  }
-  return val;
+  return randVal;
 }
 
 void RandomForOHeap::setBound(int num_leaves) {
